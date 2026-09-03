@@ -8,6 +8,7 @@
 #include "DescentCameraManager.h"
 #include "Blueprint/UserWidget.h"
 #include "Descent.h"
+#include "Public/PawnBase.h"
 #include "Widgets/Input/SVirtualJoystick.h"
 
 ADescentPlayerController::ADescentPlayerController()
@@ -38,6 +39,15 @@ void ADescentPlayerController::BeginPlay()
 
 		}
 
+	}
+}
+
+void ADescentPlayerController::OnPossess(APawn* ThePawn)
+{
+	Super::OnPossess(ThePawn);
+	if (ThePawn == Cast<APawnBase>(ThePawn))
+	{
+		PlayerRef = Cast<APawnBase>(ThePawn);
 	}
 }
 
