@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InputAction.h"
 #include "GameFramework/PlayerController.h"
+#include "Public/PawnBase.h"
 #include "DescentPlayerController.generated.h"
 
 class UInputMappingContext;
@@ -23,6 +25,9 @@ public:
 
 	/** Constructor */
 	ADescentPlayerController();
+	
+	UPROPERTY(EditAnywhere, Category="References")
+	APawnBase* PlayerRef;
 
 protected:
 
@@ -46,8 +51,20 @@ protected:
 	UPROPERTY(EditAnywhere, Config, Category = "Input|Touch Controls")
 	bool bForceTouchControls = false;
 
+	/* INPUT ACTIONS */
+	UPROPERTY(EditAnywhere, Category = "Input|Actions")
+	UInputAction* AccelerateAction;
+	UPROPERTY(EditAnywhere, Category = "Input|Actions")
+	UInputAction* PitchAction;
+	UPROPERTY(EditAnywhere, Category = "Input|Actions")
+	UInputAction* RollAction;
+	UPROPERTY(EditAnywhere, Category = "Input|Actions")
+	UInputAction* YawAction;
+	
 	/** Gameplay initialization */
 	virtual void BeginPlay() override;
+	
+	void OnPossess(APawn* Pawn) override;
 
 	/** Input mapping context setup */
 	virtual void SetupInputComponent() override;
