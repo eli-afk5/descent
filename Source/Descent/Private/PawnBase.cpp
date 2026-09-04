@@ -32,6 +32,39 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+
+void APawnBase::DoToggleMap_Implementation()
+{
+}
+
+void APawnBase::DoSwitchView_Implementation()
+{
+}
+
+void APawnBase::DoDropBomb_Implementation()
+{
+}
+
+void APawnBase::DoFireFlare_Implementation()
+{
+}
+
+void APawnBase::DoFireSecondary_Implementation()
+{
+}
+
+void APawnBase::DoFirePrimary_Implementation()
+{
+}
+
+void APawnBase::DoSlideHorizontal_Implementation(float Value)
+{
+}
+
+void APawnBase::DoSlideVertical_Implementation(float Value)
+{
+}
+
 void APawnBase::DoYaw_Implementation(float Value)
 {
 }
