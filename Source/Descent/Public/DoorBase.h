@@ -24,7 +24,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Door Settings|Components")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Door Settings|Components")
 	UStaticMeshComponent* DoorMesh;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door Settings|Data Asset")
 	TObjectPtr<UDoorsData> DoorDataAsset;

@@ -25,13 +25,14 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(BlueprintReadWrite, Category = "Item Settings|Components")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item Settings|Components")
 	UStaticMeshComponent* ItemMesh;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item Settings|Components")
 	USphereComponent* CollisionSphere; //collision sphere of the item (for pickup)
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
 	TObjectPtr<UItemsData> ItemDataAsset;
 	
+	//triggers OnPickup function in UItemsData
 	UFUNCTION()
 	virtual void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);

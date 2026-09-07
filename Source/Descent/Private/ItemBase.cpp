@@ -39,8 +39,8 @@ void AItemBase::Tick(float DeltaTime)
 
 void AItemBase::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (!ItemDataAsset) { return; } //if pointer to Data Asset is valid
-	
+	if (!ItemDataAsset) { return; } 
+	//if pointer to Data Asset is valid
 	ItemDataAsset->OnPickup(); //execute OnPickup action as defined in Data Asset
 	ItemMesh->DestroyComponent(); //destroy SM
 	CollisionSphere->DestroyComponent(); //destroy collision sphere
