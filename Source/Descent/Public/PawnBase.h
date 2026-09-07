@@ -18,6 +18,8 @@ public:
 	float MovementSpeed = 200.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
 	float RotationSpeed = 200.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	bool bHasKey;
 	
 	// Sets default values for this pawn's properties
 	APawnBase();
@@ -32,15 +34,39 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	//ACTIONS
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Components")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoAccelerate(float Value);
 	
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Components")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoPitch(float Value);
 	
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Components")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoRoll(float Value);
 	
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Components")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoYaw(float Value);
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoSlideHorizontal(float Value);
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoSlideVertical(float Value);
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoFirePrimary();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoFireSecondary();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoFireFlare();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoDropBomb();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoSwitchView();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
+	void DoToggleMap();
 };
