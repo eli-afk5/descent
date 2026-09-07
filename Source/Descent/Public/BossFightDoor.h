@@ -14,4 +14,6 @@ class DESCENT_API ABossFightDoor : public ADoorBase
 {
 	GENERATED_BODY()
 	
+public:
+	virtual void Tick(float DeltaTime) override;
 };

@@ -2,17 +2,15 @@
 
 
 #include "KeyCard.h"
-#include "BossFightDoor.h"
+#include "Public/PawnBase.h"
 
 void AKeyCard::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
+	if (APawnBase* PlayerRef = Cast<APawnBase>(OtherActor))
+	{
+		PlayerRef->bHasKey = true;
+	}
 	
-	UnlockDoor()
-}
-
-void AKeyCard::UnlockDoor(ABossFightDoor* Door)
-{
-	Door->OpenDoor();
 }
