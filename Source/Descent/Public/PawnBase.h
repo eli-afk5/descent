@@ -18,6 +18,8 @@ public:
 	float MovementSpeed = 200.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
 	float RotationSpeed = 200.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	bool bHasKey;
 	
 	// Sets default values for this pawn's properties
 	APawnBase();
