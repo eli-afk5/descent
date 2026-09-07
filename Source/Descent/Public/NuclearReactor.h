@@ -6,7 +6,7 @@
 #include "EnemyBase.h"
 #include "NuclearReactor.generated.h"
 
-class AEmergencyExitDoor;
+class UDescentGameInstance;
 /**
  * 
  */
@@ -16,5 +16,9 @@ class DESCENT_API ANuclearReactor : public AEnemyBase
 	GENERATED_BODY()
 	
 public:	
+	
+	UPROPERTY()
+	UDescentGameInstance* GI;
+	
 	virtual void OnDestroyed() override;
 };

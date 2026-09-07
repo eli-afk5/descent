@@ -3,13 +3,20 @@
 
 #include "NuclearReactor.h"
 
-#include "EmergencyExitDoor.h"
+#include "DescentGameInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 void ANuclearReactor::OnDestroyed()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, 
 	FString::Printf(TEXT("Nuclear Reactor destroyed")));
-	//TODO: open Emergency Exit 
+	
+	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
+	
+	if (GI)
+	{
+		GI->bIsNuclearReactorDestroyed = true;
+	}
 	
 	Super::OnDestroyed();
 }

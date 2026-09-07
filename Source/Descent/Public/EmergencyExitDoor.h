@@ -6,6 +6,7 @@
 #include "DoorBase.h"
 #include "EmergencyExitDoor.generated.h"
 
+class UDescentGameInstance;
 /**
  * 
  */
@@ -14,4 +15,9 @@ class DESCENT_API AEmergencyExitDoor : public ADoorBase
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY()
+	UDescentGameInstance* GI;
+	
+	virtual void Tick(float DeltaSeconds) override;
 };
