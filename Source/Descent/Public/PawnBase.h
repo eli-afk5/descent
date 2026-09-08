@@ -29,13 +29,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
 	int ShieldCounter = 100;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
-	int ConcussionCounter = 100;
+	int HostagesCounter = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
-	bool bHasVulcanCannon;
+	int ConcussionCounter = 6;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
-	int VulcanAmmoCounter = 100;
+	bool bHasVulcanCannon = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
-	int HomingMissilesCounter = 100;
+	int VulcanAmmoCounter = 0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int HomingMissilesCounter = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
 	TMap<FName, TSubclassOf<UItemsData>> DataMap;
 	UPROPERTY()
