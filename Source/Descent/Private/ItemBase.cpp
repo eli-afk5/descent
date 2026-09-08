@@ -3,7 +3,9 @@
 
 #include "ItemBase.h"
 
+#include "PawnBase.h"
 #include "Components/SphereComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AItemBase::AItemBase()
@@ -27,7 +29,8 @@ void AItemBase::BeginPlay()
 	{
 		ItemMesh->SetStaticMesh(ItemDataAsset->StaticMesh);
 	}
-
+	
+	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
 }
 
 // Called every frame
@@ -41,7 +44,7 @@ void AItemBase::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 {
 	if (!ItemDataAsset) { return; } 
 	//if pointer to Data Asset is valid
-	ItemDataAsset->OnPickup(); //execute OnPickup action as defined in Data Asset
+	ItemDataAsset->OnPickup(); //execute OnPickup action as defined in Data Asset (print string, dev only)
 	ItemMesh->DestroyComponent(); //destroy SM
 	CollisionSphere->DestroyComponent(); //destroy collision sphere
 }
