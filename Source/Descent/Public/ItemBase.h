@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DescentGameInstance.h"
 #include "ItemsData.h"
 #include "GameFramework/Actor.h"
 #include "ItemBase.generated.h"
@@ -31,6 +32,8 @@ public:
 	USphereComponent* CollisionSphere; //collision sphere of the item (for pickup)
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
 	TObjectPtr<UItemsData> ItemDataAsset;
+	UPROPERTY()
+	UDescentGameInstance* GI;
 	
 	//triggers OnPickup function in UItemsData
 	UFUNCTION()

@@ -3,18 +3,27 @@
 
 #include "Public/PawnBase.h"
 
+#include "DescentGameInstance.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 APawnBase::APawnBase()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	
 }
 
 // Called when the game starts or when spawned
 void APawnBase::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
+	if (GI)
+	{
+		GI->PlayerRef = this;
+	}
 	
 }
 
@@ -80,4 +89,3 @@ void APawnBase::DoPitch_Implementation(float Value)
 void APawnBase::DoAccelerate_Implementation(float Value)
 {
 }
-

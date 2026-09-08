@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ItemBase.h"
-#include "ResourceBase.generated.h"
+#include "ResourceBase.h"
+#include "EnergyBooster.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DESCENT_API AResourceBase : public AItemBase
+class DESCENT_API AEnergyBooster : public AResourceBase
 {
 	GENERATED_BODY()
 	

@@ -7,6 +7,10 @@
 #include "GameFramework/Pawn.h"
 #include "PawnBase.generated.h"
 
+class UDescentGameInstance;
+class AItemBase;
+class UItemsData;
+
 UCLASS()
 class DESCENT_API APawnBase : public APawn
 {
@@ -22,6 +26,20 @@ public:
 	bool bHasKey = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
 	int EnergyCounter = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int ShieldCounter = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int ConcussionCounter = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	bool bHasVulcanCannon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int VulcanAmmoCounter = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int HomingMissilesCounter = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
+	TMap<FName, TSubclassOf<UItemsData>> DataMap;
+	UPROPERTY()
+	UDescentGameInstance* GI;
 	
 	// Sets default values for this pawn's properties
 	APawnBase();
@@ -71,4 +89,5 @@ public:
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoToggleMap();
+	
 };
