@@ -42,6 +42,12 @@ public:
 	TMap<FName, TSubclassOf<UItemsData>> DataMap;
 	UPROPERTY()
 	UDescentGameInstance* GI;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int LifeCounter = 2;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int Score = 0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	int LaserCounter = 1;
 	
 	// Sets default values for this pawn's properties
 	APawnBase();
