@@ -3,6 +3,7 @@
 
 #include "EnemyBase.h"
 #include "EnemiesData.h"
+#include "PawnBase.h"
 
 // Sets default values
 AEnemyBase::AEnemyBase()
@@ -45,5 +46,5 @@ void AEnemyBase::Attack(APawn* Target)
 void AEnemyBase::OnDestroyed()
 {
 	EnemyMesh->DestroyComponent();
-	
+	GI->PlayerRef->Score = GI->PlayerRef->Score + EnemyDataAsset->PointsValue;
 }

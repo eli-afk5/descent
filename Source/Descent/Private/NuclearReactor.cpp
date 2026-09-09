@@ -3,7 +3,6 @@
 
 #include "NuclearReactor.h"
 
-#include "DescentGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 
 void ANuclearReactor::OnDestroyed()

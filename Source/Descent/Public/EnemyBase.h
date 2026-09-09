@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DescentGameInstance.h"
 #include "GameFramework/Actor.h"
 #include "EnemyBase.generated.h"
 
@@ -28,6 +29,8 @@ public:
 	UStaticMeshComponent* EnemyMesh;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Settings|Data Asset")
 	TObjectPtr<UEnemiesData> EnemyDataAsset;
+	UPROPERTY()
+	UDescentGameInstance* GI;
 	//TODO: add Pawn Sensing Component
 	
 	UFUNCTION(BlueprintCallable)

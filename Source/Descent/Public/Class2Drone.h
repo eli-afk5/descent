@@ -4,16 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "EnemyBase.h"
-#include "NuclearReactor.generated.h"
+#include "Class2Drone.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DESCENT_API ANuclearReactor : public AEnemyBase
+class DESCENT_API AClass2Drone : public AEnemyBase
 {
 	GENERATED_BODY()
 	
-public:	
-	virtual void OnDestroyed() override;
 };
