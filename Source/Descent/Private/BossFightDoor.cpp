@@ -3,21 +3,28 @@
 
 #include "BossFightDoor.h"
 
-#include "Kismet/GameplayStatics.h"
+#include "DescentGameInstance.h"
 #include "Public/PawnBase.h"
+#include "Components/SphereComponent.h"
 
-void ABossFightDoor::Tick(float DeltaTime)
+ABossFightDoor::ABossFightDoor()
 {
-	Super::Tick(DeltaTime);
-	
-	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	if (!Pawn) { return; }
-	
-	APawnBase* PlayerRef = Cast<APawnBase>(Pawn);
-	if (!PlayerRef) { return; }
-	
-	if (PlayerRef->bHasKey)
+	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collision Sphere"));
+	CollisionSphere->SetupAttachment(DoorMesh);
+	CollisionSphere->OnComponentBeginOverlap.AddDynamic(this, &ABossFightDoor::OnBeginOverlap);
+	CollisionSphere->OnComponentEndOverlap.AddDynamic(this, &ABossFightDoor::OnEndOverlap);
+}
+
+void ABossFightDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (!GI) { return; }
+	if (GI->PlayerRef->bHasKey)
 	{
 		OpenDoor();
 	}
+}
+
+void ABossFightDoor::OnEndOverlap(class UPrimitiveComponent* OverlappedComp, AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	CloseDoor();
 }

@@ -3,7 +3,9 @@
 
 #include "DoorBase.h"
 
+#include "DescentGameInstance.h"
 #include "DoorsData.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ADoorBase::ADoorBase()
@@ -24,6 +26,7 @@ void ADoorBase::BeginPlay()
 		DoorMesh->SetStaticMesh(DoorDataAsset->ClosedDoorMesh);
 	}
 
+	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
 }
 
 // Called every frame

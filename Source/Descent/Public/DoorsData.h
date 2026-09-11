@@ -27,5 +27,9 @@ public:
 	UStaticMesh* ClosedDoorMesh;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door Information")
 	float HP;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door Information")
+	bool bHasDuration = false;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door Information")
+	float Duration;
 
 };

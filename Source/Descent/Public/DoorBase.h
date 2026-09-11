@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "DoorBase.generated.h"
 
+class UDescentGameInstance;
 class UDoorsData;
 
 UCLASS()
@@ -28,6 +29,8 @@ public:
 	UStaticMeshComponent* DoorMesh;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door Settings|Data Asset")
 	TObjectPtr<UDoorsData> DoorDataAsset;
+	UPROPERTY()
+	UDescentGameInstance* GI;
 
 	UFUNCTION()
 	virtual void OpenDoor();

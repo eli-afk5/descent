@@ -18,10 +18,20 @@ void AHiddenDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 {
 	if (!DoorDataAsset) { return; }
 	OpenDoor();
+	
+	if (DoorDataAsset->bHasDuration)
+	{
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &AHiddenDoor::CloseDoor, 
+			DoorDataAsset->Duration, false);
+	}
 }
 
 void AHiddenDoor::OnEndOverlap(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (!DoorDataAsset) { return; }
-	CloseDoor();
+	
+	if (!DoorDataAsset->bHasDuration)
+	{
+		CloseDoor();
+	}
 }

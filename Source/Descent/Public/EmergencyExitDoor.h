@@ -15,9 +15,6 @@ class DESCENT_API AEmergencyExitDoor : public ADoorBase
 {
 	GENERATED_BODY()
 	
-public:
-	UPROPERTY()
-	UDescentGameInstance* GI;
-	
+public:	
 	virtual void Tick(float DeltaSeconds) override;
 };
