@@ -12,7 +12,7 @@ class AItemBase;
 class UItemsData;
 
 UENUM(BlueprintType)
-enum class CannonType : uint8 { LASER, VULKAN };
+enum class CannonType : uint8 { LASER, VULCAN };
 UENUM(BlueprintType)
 enum class MissileType : uint8 { CONCUSSION, HOMING };
 
