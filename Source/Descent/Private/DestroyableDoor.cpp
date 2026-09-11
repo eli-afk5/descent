@@ -3,7 +3,7 @@
 
 #include "DestroyableDoor.h"
 
-#include "DestroyableDoorData.h"
+//#include "DestroyableDoorData.h"
 #include "DoorsData.h"
 
 void ADestroyableDoor::Tick(float DeltaTime)
