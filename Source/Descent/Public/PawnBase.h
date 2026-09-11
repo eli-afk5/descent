@@ -11,6 +11,11 @@ class UDescentGameInstance;
 class AItemBase;
 class UItemsData;
 
+UENUM(BlueprintType)
+enum class CannonType : uint8 { LASER, VULKAN };
+UENUM(BlueprintType)
+enum class MissileType : uint8 { CONCUSSION, HOMING };
+
 UCLASS()
 class DESCENT_API APawnBase : public APawn
 {
@@ -38,6 +43,10 @@ public:
 	int VulcanAmmoCounter = 0;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
 	int HomingMissilesCounter = 0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	CannonType CannonInUse = CannonType::LASER;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Variables")
+	MissileType MissileInUse = MissileType::CONCUSSION;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
 	TMap<FName, TSubclassOf<UItemsData>> DataMap;
 	UPROPERTY()
