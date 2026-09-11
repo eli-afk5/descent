@@ -13,9 +13,8 @@ void AVulcanCannon::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Turquoise, 
 		FString::Printf(TEXT("Vulcan Cannon picked up!")));
 	
-	GI->PlayerRef->VulcanAmmoCounter = GI->PlayerRef->VulcanAmmoCounter + ItemDataAsset->InitialAmount;
+	GI->PlayerRef->VulcanAmmoCounter = GI->PlayerRef->VulcanAmmoCounter + 2500;
 	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Turquoise, 
-	FString::Printf(TEXT("%i ammunition units added automatically."), 
-		ItemDataAsset->InitialAmount));
+	FString::Printf(TEXT("2500 ammunition units added automatically.")));
 }
 
