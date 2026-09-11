@@ -25,5 +25,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door ViewModel",
 		meta=(ToolTip = "Static Mesh to be assigned to the door when it's closed."))
 	UStaticMesh* ClosedDoorMesh;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door Information")
+	float HP;
 
 };
