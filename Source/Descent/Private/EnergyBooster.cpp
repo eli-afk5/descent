@@ -9,7 +9,8 @@ void AEnergyBooster::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
 {
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
-	GI->PlayerRef->EnergyCounter = GI->PlayerRef->EnergyCounter + ItemDataAsset->UnitsAdded;
-	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
-		FString::Printf(TEXT("Energy: %i"), GI->PlayerRef->EnergyCounter));
+	if (!GI) { return; }
+	
+	GI->PlayerRef->EnergyCounter = FMath::Clamp(
+		GI->PlayerRef->EnergyCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
 }

@@ -9,9 +9,10 @@ void AShieldBooster::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
 {
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
-	GI->PlayerRef->ShieldCounter = GI->PlayerRef->ShieldCounter + ItemDataAsset->UnitsAdded;
-	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
-		FString::Printf(TEXT("Shield: %i"), GI->PlayerRef->ShieldCounter));
+	if (!GI) { return; }
+	
+	GI->PlayerRef->ShieldCounter = FMath::Clamp(
+		GI->PlayerRef->ShieldCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
 }
 
 
