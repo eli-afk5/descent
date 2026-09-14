@@ -4,6 +4,7 @@
 #include "EnemyBase.h"
 #include "EnemiesData.h"
 #include "PawnBase.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AEnemyBase::AEnemyBase()
@@ -24,6 +25,9 @@ void AEnemyBase::BeginPlay()
 	{
 		EnemyMesh->SetStaticMesh(EnemyDataAsset->StaticMesh);
 	}
+	
+	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
+	
 }
 
 // Called every frame
@@ -46,5 +50,8 @@ void AEnemyBase::Attack(APawn* Target)
 void AEnemyBase::OnDestroyed()
 {
 	EnemyMesh->DestroyComponent();
+	
+	if (!GI) { return; }
+	
 	GI->PlayerRef->Score = GI->PlayerRef->Score + EnemyDataAsset->PointsValue;
 }

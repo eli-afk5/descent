@@ -32,9 +32,9 @@ public:
 	UPROPERTY()
 	UDescentGameInstance* GI;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void OpenDoor();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void CloseDoor();
 
 };

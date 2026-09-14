@@ -10,8 +10,6 @@ void ANuclearReactor::OnDestroyed()
 	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, 
 	FString::Printf(TEXT("Nuclear Reactor destroyed")));
 	
-	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
-	
 	if (GI)
 	{
 		GI->bIsNuclearReactorDestroyed = true;
