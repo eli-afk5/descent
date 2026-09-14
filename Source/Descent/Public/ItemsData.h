@@ -36,6 +36,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information",
 		meta=(ToolTip = "Whether this item is destroyed or not upon player death."))
 	bool bIsDestroyed; //the item is destroyed when the player dies
+	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information")
+	int PointsMultiplier;
+	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information")
+	FColor ScreenPulseColor;
+	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information")
+	int PointsValue;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Item Actions", meta=(ForceAsFunction))
 	void OnPickup(); //what happens when the item is picked up

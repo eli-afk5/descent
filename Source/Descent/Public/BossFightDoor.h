@@ -6,7 +6,7 @@
 #include "DoorBase.h"
 #include "BossFightDoor.generated.h"
 
-class USphereComponent;
+class UBoxComponent;
 /**
  * 
  */
@@ -19,7 +19,7 @@ public:
 	ABossFightDoor();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door Settings|Components")
-	USphereComponent* CollisionSphere;
+	UBoxComponent* CollisionBox;
 	
 	UFUNCTION()
 	void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 

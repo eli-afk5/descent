@@ -4,15 +4,16 @@
 #include "BossFightDoor.h"
 
 #include "DescentGameInstance.h"
+#include "Components/BoxComponent.h"
 #include "Public/PawnBase.h"
 #include "Components/SphereComponent.h"
 
 ABossFightDoor::ABossFightDoor()
 {
-	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collision Sphere"));
-	CollisionSphere->SetupAttachment(DoorMesh);
-	CollisionSphere->OnComponentBeginOverlap.AddDynamic(this, &ABossFightDoor::OnBeginOverlap);
-	CollisionSphere->OnComponentEndOverlap.AddDynamic(this, &ABossFightDoor::OnEndOverlap);
+	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision Box"));
+	CollisionBox->SetupAttachment(DoorMesh);
+	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &ABossFightDoor::OnBeginOverlap);
+	CollisionBox->OnComponentEndOverlap.AddDynamic(this, &ABossFightDoor::OnEndOverlap);
 }
 
 void ABossFightDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

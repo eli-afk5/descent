@@ -40,4 +40,5 @@ void APermanentEnergyCenter::OnBeginOverlap(UPrimitiveComponent* OverlappedCompo
 	
 	GI->PlayerRef->EnergyCounter = FMath::Clamp(
 		GI->PlayerRef->EnergyCounter + RechargedEnergyUnits, 0, 200);
+	CollisionBox->DestroyComponent();
 }
