@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "DescentGameInstance.h"
-#include "GameFramework/Actor.h"
+#include "GameFramework/Pawn.h"
 #include "EnemyBase.generated.h"
 
 class UEnemiesData;
 
 UCLASS()
-class DESCENT_API AEnemyBase : public AActor
+class DESCENT_API AEnemyBase : public APawn
 {
 	GENERATED_BODY()
 	
