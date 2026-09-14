@@ -6,7 +6,7 @@
 #include "DoorBase.h"
 #include "HiddenDoor.generated.h"
 
-class USphereComponent;
+class UBoxComponent;
 /**
  * 
  */
@@ -19,7 +19,7 @@ public:
 	AHiddenDoor();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door Settings|Components")
-	USphereComponent* CollisionSphere;
+	UBoxComponent* CollisionBox;
 	UPROPERTY(BlueprintReadOnly, Category = "Door Settings|Misc")
 	FTimerHandle TimerHandle;
 	

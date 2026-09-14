@@ -20,5 +20,15 @@ public:
 	APawnBase* PlayerRef;
 	UPROPERTY(BlueprintReadWrite, Category = "Game Istance|Variables")
 	bool bIsNuclearReactorDestroyed = false;
+	UPROPERTY()
+	int EnergyPointsMultiplier;
+	UPROPERTY()
+	int ShieldPointsMultiplier;
+	UPROPERTY()
+	int HostagesPointsValue;
+	UPROPERTY()
+	int HostagesStackSize;
+	
+	
 	
 };

@@ -13,10 +13,5 @@ UCLASS(Blueprintable)
 class DESCENT_API UResourcesData : public UItemsData
 {
 	GENERATED_BODY()
-
-public:
-	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information")
-	int PointsMultiplier;
-	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Item Information")
-	FColor ScreenPulseColor;
+	
 };

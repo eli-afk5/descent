@@ -5,6 +5,15 @@
 
 #include "PawnBase.h"
 
+void AEnergyBooster::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if (!GI) { return; }
+	
+	GI->EnergyPointsMultiplier = ItemDataAsset->PointsMultiplier;
+}
+
 void AEnergyBooster::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
