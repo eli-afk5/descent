@@ -32,5 +32,7 @@ public:
 	int AmountInLevel; //number of enemies spawned on begin play
 	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Enemy Information")
 	int PointsValue; //points awarded upon destroying the enemy
+	UPROPERTY(EditDefaultsOnly, BLueprintReadOnly, Category = "Enemy Information")
+	float MoveRadius; //area the enemy will move around in
 
 };
