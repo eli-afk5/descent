@@ -21,11 +21,14 @@ void AHostage::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* 
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
 	if (!GI) { return; }
+	if (OtherActor == GI->PlayerRef)
+	{
+		GI->PlayerRef->HostagesCounter = GI->PlayerRef->HostagesCounter + ItemDataAsset->UnitsAdded;
+        	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
+        		FString::Printf(TEXT("Hostages: %i"), GI->PlayerRef->HostagesCounter));
+        	
+        	GI->PlayerRef->Score = GI->PlayerRef->Score + ItemDataAsset->PointsValue;
+	}
 	
-	GI->PlayerRef->HostagesCounter = GI->PlayerRef->HostagesCounter + ItemDataAsset->UnitsAdded;
-	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
-		FString::Printf(TEXT("Hostages: %i"), GI->PlayerRef->HostagesCounter));
-	
-	GI->PlayerRef->Score = GI->PlayerRef->Score + ItemDataAsset->PointsValue;
 }
 

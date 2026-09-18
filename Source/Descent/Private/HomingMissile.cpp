@@ -10,10 +10,13 @@ void AHomingMissile::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
 	if (!GI) { return; }
+	if (OtherActor == GI->PlayerRef)
+	{
+		GI->PlayerRef->HomingMissilesCounter = FMath::Clamp(
+        		GI->PlayerRef->HomingMissilesCounter + ItemDataAsset->UnitsAdded, 
+        		0, ItemDataAsset->StackSize);
+	}
 	
-	GI->PlayerRef->HomingMissilesCounter = FMath::Clamp(
-		GI->PlayerRef->HomingMissilesCounter + ItemDataAsset->UnitsAdded, 
-		0, ItemDataAsset->StackSize);
 //	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
 //		FString::Printf(TEXT("HomingMissiles: %i"), GI->PlayerRef->HomingMissilesCounter));
 }

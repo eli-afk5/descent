@@ -11,8 +11,12 @@ void AConcussionMissiles::OnBeginOverlap(UPrimitiveComponent* OverlappedComponen
 	
 	if (!GI) { return; }
 	
-	GI->PlayerRef->ConcussionCounter = FMath::Clamp(
-		GI->PlayerRef->ConcussionCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
+	if (OtherActor == GI->PlayerRef)
+	{
+		GI->PlayerRef->ConcussionCounter = FMath::Clamp(
+			GI->PlayerRef->ConcussionCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
+	}
+	
 //	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
 //		FString::Printf(TEXT("Concussion: %i"), GI->PlayerRef->ConcussionCounter));
 }

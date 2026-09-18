@@ -11,7 +11,7 @@ void AVulcanCannon::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 	
 	if (!GI) { return; }
 	
-	if (!GI->PlayerRef->bHasVulcanCannon)
+	if (OtherActor == GI->PlayerRef && !GI->PlayerRef->bHasVulcanCannon)
 	{
 		GI->PlayerRef->bHasVulcanCannon = true;
 //		GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Turquoise, 
