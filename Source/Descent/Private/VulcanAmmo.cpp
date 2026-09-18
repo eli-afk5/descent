@@ -12,8 +12,12 @@ void AVulcanAmmo::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	if (!GI) { return; }
 	if (OtherActor == GI->PlayerRef)
 	{
+		if (UnitsDropped==0)
+		{
+			UnitsDropped = ItemDataAsset->UnitsAdded;
+		}
 		GI->PlayerRef->VulcanAmmoCounter = FMath::Clamp(
-        		GI->PlayerRef->VulcanAmmoCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
+        		GI->PlayerRef->VulcanAmmoCounter + UnitsDropped, 0, ItemDataAsset->StackSize);
 	}
 	
 //	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Red, 
