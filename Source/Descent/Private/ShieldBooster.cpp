@@ -19,9 +19,12 @@ void AShieldBooster::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AA
 	Super::OnBeginOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
 	if (!GI) { return; }
+	if (OtherActor == GI->PlayerRef)
+	{
+		GI->PlayerRef->ShieldCounter = FMath::Clamp(
+             		GI->PlayerRef->ShieldCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
+	}
 	
-	GI->PlayerRef->ShieldCounter = FMath::Clamp(
-		GI->PlayerRef->ShieldCounter + ItemDataAsset->UnitsAdded, 0, ItemDataAsset->StackSize);
 }
 
 

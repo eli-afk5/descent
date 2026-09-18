@@ -44,7 +44,11 @@ void AItemBase::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 {
 	if (!ItemDataAsset) { return; } 
 	//if pointer to Data Asset is valid
-	ItemDataAsset->OnPickup(); //execute OnPickup action as defined in Data Asset (print string, dev only)
-	ItemMesh->DestroyComponent(); //destroy SM
-	CollisionSphere->DestroyComponent(); //destroy collision sphere
+	if (OtherActor == GI->PlayerRef)
+	{
+		ItemDataAsset->OnPickup(); //execute OnPickup action as defined in Data Asset (print string, dev only)
+		ItemMesh->DestroyComponent(); //destroy SM
+		CollisionSphere->DestroyComponent(); //destroy collision sphere
+	}
+	
 }
