@@ -41,6 +41,10 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void APawnBase::OnWin_Implementation()
+{
+}
+
 
 void APawnBase::DoToggleMap_Implementation()
 {
@@ -89,3 +93,4 @@ void APawnBase::DoPitch_Implementation(float Value)
 void APawnBase::DoAccelerate_Implementation(float Value)
 {
 }
+

@@ -30,16 +30,5 @@ void AEmergencyExitDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent
 {
 	if (!GI) { return; }
 	
-	if (GI->PlayerRef->EnergyCounter>100)
-	{
-		GI->PlayerRef->Score = GI->PlayerRef->Score + GI->PlayerRef->EnergyCounter * GI->EnergyPointsMultiplier;
-	}
-	if (GI->PlayerRef->ShieldCounter>100)
-	{
-		GI->PlayerRef->Score = GI->PlayerRef->Score + GI->PlayerRef->ShieldCounter * GI->ShieldPointsMultiplier;
-	}
-	if (GI->PlayerRef->HostagesCounter == GI->HostagesStackSize)
-	{
-		GI->PlayerRef->Score = GI->PlayerRef->Score + GI->HostagesPointsValue * GI->HostagesStackSize;
-	}
+	GI->PlayerRef->OnWin();
 }

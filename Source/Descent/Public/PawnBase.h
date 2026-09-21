@@ -107,4 +107,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Actions")
 	void DoToggleMap();
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Functions")
+	void OnWin();
+	
 };
