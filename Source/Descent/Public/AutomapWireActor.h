@@ -31,6 +31,10 @@ public:
 	float Thickness = 5.f;
 	UPROPERTY(EditAnywhere, Category = "Automap Settings")
 	TObjectPtr<UMaterialInterface> WireMaterial;
+	UPROPERTY(EditAnywhere, Category = "Automap Settings")
+	TMap<FName, FLinearColor> CategoryColors;
+	UPROPERTY(EditAnywhere, Category = "Automap Settings")
+	FLinearColor DefaultColor = FLinearColor::White;
 
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "Automap Settings")
@@ -39,7 +43,5 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable, Category = "Automap Actions")
 	void RebuildInstances();
-
-
-
+	
 };

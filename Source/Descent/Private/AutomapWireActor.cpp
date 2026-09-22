@@ -46,6 +46,7 @@ void AAutomapWireActor::Tick(float DeltaTime)
 void AAutomapWireActor::RebuildInstances()
 {
 	ISM->ClearInstances();
+	ISM->SetNumCustomDataFloats(3);
 
 	if (WireMaterial)
 	{
@@ -59,6 +60,7 @@ void AAutomapWireActor::RebuildInstances()
 	}
 
 	TArray<FTransform> Xf;
+	TArray<FName> SegmentCategories;
 	Xf.Reserve(Data->Lines.Num() / 2);
 
 	for (int32 i = 0; i + 1 < Data->Lines.Num(); i += 2)
@@ -75,8 +77,22 @@ void AAutomapWireActor::RebuildInstances()
 			(A + B) * 0.5f,
 			FVector(Thickness / 100.f, Thickness / 100.f, L / 100.f)
 		);
+		
+		const int32 SegIndex = i / 2;
+		SegmentCategories.Add(Data->Categories.IsValidIndex(SegIndex) ? Data->Categories[SegIndex] : NAME_None);
 	}
 
-	ISM->AddInstances(Xf, false, false);
+	TArray<int32> Indices = ISM->AddInstances(Xf, /*bShouldReturnIndices*/ true, /*bWorldSpace*/ false);
+
+	for (int32 k = 0; k < Indices.Num(); ++k)
+	{
+		const FName Category = SegmentCategories[k];
+		const FLinearColor Color = CategoryColors.Contains(Category) ? CategoryColors[Category] : DefaultColor;
+
+		ISM->SetCustomDataValue(Indices[k], 0, Color.R);
+		ISM->SetCustomDataValue(Indices[k], 1, Color.G);
+		ISM->SetCustomDataValue(Indices[k], 2, Color.B);
+	}
+	
 	UE_LOG(LogTemp, Log, TEXT("AAutomapWireActor::RebuildInstances - %d instances created"), Xf.Num());
 }
