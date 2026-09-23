@@ -8,6 +8,7 @@
 #include "GameFramework/Actor.h"
 #include "ItemBase.generated.h"
 
+class URotatingMovementComponent;
 class USphereComponent;
 
 UCLASS()
@@ -30,6 +31,8 @@ public:
 	UStaticMeshComponent* ItemMesh;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item Settings|Components")
 	USphereComponent* CollisionSphere; //collision sphere of the item (for pickup)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item Settings|Components")
+	URotatingMovementComponent* RotatingMovement;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Settings|Data Asset")
 	TObjectPtr<UItemsData> ItemDataAsset;
 	UPROPERTY()
