@@ -15,5 +15,8 @@ class DESCENT_API UAutomapWireData : public UDataAsset
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(VisibleAnywhere) TArray<FVector> Lines; //pairs of points in world space
+	UPROPERTY(VisibleAnywhere) 
+	TArray<FVector> Lines; //pairs of points in world space
+	UPROPERTY(VisibleAnywhere)
+	TArray<FName> Categories;
 };

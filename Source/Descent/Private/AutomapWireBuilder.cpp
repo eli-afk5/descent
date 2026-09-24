@@ -131,6 +131,7 @@ void AAutomapWireBuilder::Bake()
 
     TSet<TPair<FIntVector, FIntVector>> Seen;
     TArray<FVector> Out;
+    TArray<FName> OutCategories;
     auto Quantize = [](const FVector& V) {
         return FIntVector(FMath::RoundToInt(V.X), FMath::RoundToInt(V.Y), FMath::RoundToInt(V.Z));
     };
@@ -151,30 +152,18 @@ void AAutomapWireBuilder::Bake()
         UE_LOG(LogTemp, Log, TEXT("Actor %s, tag match: %d, mesh valid: %d"),
           *It->GetName(), It->ActorHasTag(SourceTag), Mesh != nullptr);
         
+        FName Category = NAME_None;
+        for (const FName& Tag : It->Tags)
+        {
+            if (Tag != SourceTag)
+            {
+                Category = Tag;
+                break;
+            }
+        }
+
         TArray<FVector> Local;
         ExtractFeatureEdges(Mesh, AngleDeg, Local);
-
-/*        const FTransform T = It->GetActorTransform();
-        for (int32 i = 0; i + 1 < Local.Num(); i += 2)
-        {
-            const FVector A = T.TransformPosition(Local[i]);
-            const FVector B = T.TransformPosition(Local[i + 1]);
-
-            FIntVector QA = Quantize(A);
-            FIntVector QB = Quantize(B);
-            if (QB.X < QA.X || (QB.X == QA.X && (QB.Y < QA.Y || (QB.Y == QA.Y && QB.Z < QA.Z))))
-            {
-                Swap(QA, QB);
-            }
-
-            bool bAlreadyInSet = false;
-            Seen.Add(TPair<FIntVector, FIntVector>(QA, QB), &bAlreadyInSet);
-            if (!bAlreadyInSet)
-            {
-                Out.Add(A);
-                Out.Add(B);
-            }
-        } */
         
         for (int32 i = 0; i + 1 < Local.Num(); i += 2)
         {
@@ -194,6 +183,7 @@ void AAutomapWireBuilder::Bake()
             {
                 Out.Add(A);
                 Out.Add(B);
+                OutCategories.Add(Category);
             }
         }
     }
@@ -202,6 +192,7 @@ void AAutomapWireBuilder::Bake()
 
     Target->Modify();
     Target->Lines = MoveTemp(Out);
+    Target->Categories = MoveTemp(OutCategories);
     Target->MarkPackageDirty();
 
     UE_LOG(LogTemp, Log, TEXT("AAutomapWireBuilder::Bake - %d generated segments"), NumSegments);

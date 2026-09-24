@@ -5,6 +5,7 @@
 
 #include "PawnBase.h"
 #include "Components/SphereComponent.h"
+#include "GameFramework/RotatingMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -17,6 +18,7 @@ AItemBase::AItemBase()
 	CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collision Sphere"));
 	CollisionSphere->SetupAttachment(ItemMesh);
 	CollisionSphere->OnComponentBeginOverlap.AddDynamic(this, &AItemBase::OnBeginOverlap);
+	RotatingMovement = CreateDefaultSubobject<URotatingMovementComponent>(TEXT("Rotating Movement"));
 	
 }
 
