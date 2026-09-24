@@ -29,7 +29,7 @@ void AItemBase::BeginPlay()
 
 	if (ItemDataAsset)
 	{
-		ItemMesh->SetStaticMesh(ItemDataAsset->StaticMesh);
+		//ItemMesh->SetStaticMesh(ItemDataAsset->StaticMesh);
 	}
 	
 	GI = Cast<UDescentGameInstance>(UGameplayStatics::GetGameInstance(this));
