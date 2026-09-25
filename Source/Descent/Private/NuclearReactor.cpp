@@ -3,6 +3,7 @@
 
 #include "NuclearReactor.h"
 
+#include "PawnBase.h"
 #include "Kismet/GameplayStatics.h"
 
 void ANuclearReactor::OnDestroyed()
@@ -15,5 +16,17 @@ void ANuclearReactor::OnDestroyed()
 		GI->bIsNuclearReactorDestroyed = true;
 	}
 	
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ANuclearReactor::OnTimerOver, 45, false);
+	
 	Super::OnDestroyed();
+}
+
+void ANuclearReactor::OnTimerOver()
+{
+	GI->PlayerRef->OnDeath();
+	
+	if (GI->PlayerRef->LifeCounter > 0)
+	{
+		GI->PlayerRef->OnWin();
+	}
 }

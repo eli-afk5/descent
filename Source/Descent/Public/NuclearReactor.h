@@ -15,5 +15,9 @@ class DESCENT_API ANuclearReactor : public AEnemyBase
 	GENERATED_BODY()
 	
 public:	
+	UPROPERTY(BlueprintReadOnly, Category = "Nuclear Reactor|Timer")
+	FTimerHandle TimerHandle;
+	
 	virtual void OnDestroyed() override;
+	void OnTimerOver();
 };

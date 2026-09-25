@@ -94,3 +94,7 @@ void APawnBase::DoAccelerate_Implementation(float Value)
 {
 }
 
+void APawnBase::OnDeath_Implementation()
+{
+	
+}

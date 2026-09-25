@@ -110,4 +110,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Functions")
 	void OnWin();
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Functions")
+	void OnDeath();
+	
 };
