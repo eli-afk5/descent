@@ -8,6 +8,7 @@
 
 void ANuclearReactor::OnDestroyed()
 {
+	CreateTimer_Implementation();
 	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, 
 	FString::Printf(TEXT("Nuclear Reactor destroyed")));
 	
@@ -29,4 +30,8 @@ void ANuclearReactor::OnTimerOver()
 	{
 		GI->PlayerRef->OnWin();
 	}
+}
+
+void ANuclearReactor::CreateTimer_Implementation()
+{
 }

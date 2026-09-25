@@ -20,4 +20,6 @@ public:
 	
 	virtual void OnDestroyed() override;
 	void OnTimerOver();
+	UFUNCTION(BlueprintNativeEvent)
+	void CreateTimer();
 };
