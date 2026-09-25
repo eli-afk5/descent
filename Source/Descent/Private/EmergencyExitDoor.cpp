@@ -30,5 +30,8 @@ void AEmergencyExitDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent
 {
 	if (!GI) { return; }
 	
-	GI->PlayerRef->OnWin();
+	if (GI->PlayerRef == Cast<APawnBase>(OtherActor))
+	{
+		GI->PlayerRef->OnWin();
+	}
 }

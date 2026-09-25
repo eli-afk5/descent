@@ -16,7 +16,7 @@ void ANuclearReactor::OnDestroyed()
 		GI->bIsNuclearReactorDestroyed = true;
 	}
 	
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ANuclearReactor::OnTimerOver, 45, false);
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ANuclearReactor::OnTimerOver, 45.f, false);
 	
 	Super::OnDestroyed();
 }
