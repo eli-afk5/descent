@@ -4,6 +4,7 @@
 #include "HiddenDoor.h"
 
 #include "DoorsData.h"
+#include "EnemyBase.h"
 #include "Components/BoxComponent.h"
 #include "Components/SphereComponent.h"
 
@@ -18,6 +19,9 @@ AHiddenDoor::AHiddenDoor()
 void AHiddenDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (!DoorDataAsset) { return; }
+	
+	if (AEnemyBase* Enemy = Cast<AEnemyBase>(OtherActor)) { return; }
+	
 	OpenDoor();
 	
 	if (DoorDataAsset->bHasDuration)
@@ -30,6 +34,8 @@ void AHiddenDoor::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 void AHiddenDoor::OnEndOverlap(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (!DoorDataAsset) { return; }
+	
+	if (AEnemyBase* Enemy = Cast<AEnemyBase>(OtherActor)) { return; }
 	
 	if (!DoorDataAsset->bHasDuration)
 	{
