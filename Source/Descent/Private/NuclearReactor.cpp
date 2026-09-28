@@ -3,10 +3,12 @@
 
 #include "NuclearReactor.h"
 
+#include "PawnBase.h"
 #include "Kismet/GameplayStatics.h"
 
 void ANuclearReactor::OnDestroyed()
 {
+	CreateTimer_Implementation();
 	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, 
 	FString::Printf(TEXT("Nuclear Reactor destroyed")));
 	
@@ -15,5 +17,21 @@ void ANuclearReactor::OnDestroyed()
 		GI->bIsNuclearReactorDestroyed = true;
 	}
 	
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ANuclearReactor::OnTimerOver, 45.f, false);
+	
 	Super::OnDestroyed();
+}
+
+void ANuclearReactor::OnTimerOver()
+{
+	GI->PlayerRef->OnDeath();
+	
+	if (GI->PlayerRef->LifeCounter > 0)
+	{
+		GI->PlayerRef->OnWin();
+	}
+}
+
+void ANuclearReactor::CreateTimer_Implementation()
+{
 }
